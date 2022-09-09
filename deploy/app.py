@@ -1,6 +1,7 @@
 import pickle
 import flask
 import os
+from flask import render_template
 
 app = flask.Flask('Stellar Classifier')
 PORT = int(os.getenv('PORT', 9099))
@@ -19,3 +20,7 @@ def predict():
     return flask.jsonify(response)
 
 app.run(port=PORT)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
